@@ -49,3 +49,9 @@
 .example-full-width {
     width: 80%;
 }
+
+.custom-action-button {
+
+    color: rgb(224, 205, 31);
+    /* Change the text color to white or any color that contrasts well with the background */
+}

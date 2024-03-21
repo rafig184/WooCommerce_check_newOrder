@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { ConnectionCheckComponent } from './components/connection-check/connection-check.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -29,6 +30,7 @@ import { ConnectionCheckComponent } from './components/connection-check/connecti
     MatButtonModule,
     MatInputModule,
     MatIconModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
