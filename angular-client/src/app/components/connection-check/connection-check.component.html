@@ -1,0 +1,51 @@
+<div class="outterDiv">
+    <div class="inlineDiv">
+        <mat-form-field class="example-full-width">
+            <mat-label>Enter Domain:</mat-label>
+            <input type="text" matInput [(ngModel)]="domain">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Enter Key:</mat-label>
+            <input type="password" matInput [(ngModel)]="key">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Enter Sercret:</mat-label>
+            <input type="password" matInput [(ngModel)]="secret">
+        </mat-form-field>
+        <div class="btn">
+            <button mat-raised-button color="warn" (click)="clear()">נקה</button>
+            <button mat-raised-button color="primary" (click)="checkConnection()">בדוק חיבור</button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isLoading">
+    <app-spinner></app-spinner>
+</div>
+
+<div class="form" *ngIf="isSearch">
+    <h2 class="h2">!!חיבור תקין</h2>
+    <table class="table">
+        <thead class="thead">
+            <tr class="tr">
+                <th class="th">מלאי</th>
+                <th class="th">מחיר</th>
+                <th class="th">שם פריט</th>
+                <th class="th">מק"ט</th>
+
+            </tr>
+        </thead>
+        <tbody class="tbody">
+            <tr class="tr" *ngFor="let product of products">
+                <!-- <td class="td">{{ account._id }}</td>
+                <td class="td">{{ account.accountNumber }}</td>
+                <td class="td">{{ account.type }}</td>
+                <td class="td">{{ account.amount }} $</td>
+                <td class="td">{{ account.date }}</td>
+                <td class="td">{{ account.payment }}</td>
+                <td class="td">{{ account.intrest }}%</td> -->
+            </tr>
+        </tbody>
+    </table>
+
+</div>
