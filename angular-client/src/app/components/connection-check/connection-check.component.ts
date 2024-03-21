@@ -37,6 +37,8 @@ export class ConnectionCheckComponent {
       key: this.key,
       secret: this.secret
     }
+    console.log(connection);
+
 
     try {
       this.isLoading = true
