@@ -19,10 +19,16 @@
 
 }
 
+.form {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 .table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+
 }
 
 .table th,

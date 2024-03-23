@@ -59,6 +59,9 @@ export class ConnectionCheckComponent {
         return
       }
       this.isLoading = true
+      // const connectionJson = JSON.stringify(connection);
+      // console.log(connectionJson);
+
       const result = await this.connectionCheckService.checkConnectionService(connection)
       this.products = result.data
       this.isSearch = true
@@ -67,7 +70,7 @@ export class ConnectionCheckComponent {
       this.secret = ""
     } catch (error) {
       console.log(error);
-      alert("Connection Problem")
+      alert(`Connection Problem : ${error}`)
     } finally {
       this.isLoading = false
     }
