@@ -5,12 +5,11 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class ConnectionCheckService {
-  public url: string
   constructor() {
-    this.url = ""
+
   }
 
-  async checkConnectionService(connection: any): Promise<any> {
-    return await axios.get(this.url, connection)
+  async checkConnectionService(domain :string, key:string, secret:string): Promise<any> {
+    return await axios.get(`${domain}/wp-json/wc/v3/data?consumer_key=${key}&consumer_secret=${secret}`);
   }
 }

@@ -2,20 +2,26 @@
     <div class="inlineDiv">
         <mat-form-field class="example-full-width">
             <mat-label>Enter Domain:</mat-label>
-            <input type="text" matInput [(ngModel)]="domain">
+            <input #input type="text" matInput [(ngModel)]="domain" (click)="selectInput(input)">
         </mat-form-field>
         <mat-form-field class="example-full-width">
             <mat-label>Enter Key:</mat-label>
-            <input type="text" matInput [(ngModel)]="key">
+            <input #input2 type="text" matInput [(ngModel)]="key" (click)="selectInput(input2)">
         </mat-form-field>
         <mat-form-field class="example-full-width">
             <mat-label>Enter Secret:</mat-label>
-            <input type="password" matInput [(ngModel)]="secret">
+            <input #input3 type="password" matInput [(ngModel)]="secret" (click)="selectInput(input3)">
         </mat-form-field>
         <div class="btn">
             <button mat-raised-button color="warn" (click)="clear()">נקה</button>
             <button mat-raised-button color="primary" (click)="checkConnection()">בדוק חיבור</button>
         </div>
+        <div class="status" *ngIf="isConnectionGood">
+            <h2 [ngClass]="{ 'status-good': statusCode.includes('תקין'), 'status-limited': statusCode.includes('מוגבל'), 'status-error': isError }" >{{this.statusCode}}</h2>
+            <a mat-raised-button href={{this.url}} target="_blank">לינק</a>
+        </div>
+        
+        
     </div>
 </div>
 
@@ -23,8 +29,7 @@
     <app-spinner></app-spinner>
 </div>
 
-<div class="form" *ngIf="isSearch">
-    <h2 class="h2">!!חיבור תקין</h2>
+<!-- <div class="form" *ngIf="isSearch">
     <table class="table">
         <thead class="thead">
             <tr class="tr">
@@ -34,14 +39,14 @@
                 <th class="th">מק"ט</th>
             </tr>
         </thead>
-        <tbody class="tbody">
+        <tbody class="tbody"> -->
             <!-- <tr class="tr" *ngFor="let product of products"> -->
             <!-- <td class="td">{{ product._id }}</td>
                 <td class="td">{{ account.productName }}</td>
                 <td class="td">{{ account.price }}</td>
                 <td class="td">{{ account.inventory }} $</td> -->
             <!-- </tr> -->
-        </tbody>
+        <!-- </tbody>
     </table>
 
-</div>
+</div> -->
