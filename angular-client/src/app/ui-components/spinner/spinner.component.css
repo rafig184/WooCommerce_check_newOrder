@@ -1,4 +1,4 @@
 .example-margin {
-    margin: auto;
-    margin-top: 10%;
+    margin-bottom: -32px;
+    transform: scale(0.5)
 }

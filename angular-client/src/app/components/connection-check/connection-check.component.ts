@@ -14,10 +14,12 @@ export class ConnectionCheckComponent {
   public key: string
   public secret: string
   public products: any[]
-  public isConnectionGood: Boolean
+  public isStatus: Boolean
   public isLoading: Boolean
   public statusCode : string
-  public isError: Boolean
+  public isConnectionError: Boolean
+  public isConnectionGood: Boolean
+  public isConnectionLimited: Boolean
   public errorStatus :any
   public url: string
   
@@ -27,17 +29,21 @@ export class ConnectionCheckComponent {
     this.key = ""
     this.secret = ""
     this.products = []
-    this.isConnectionGood = false
+    this.isStatus = false
     this.isLoading = false
     this.statusCode = ""
-    this.isError = false
+    this.isConnectionError = false
+    this.isConnectionGood = false
+    this.isConnectionLimited = false
     this.errorStatus = ""
     this.url = ""
   }
 
   clear() {
+    this.isStatus = false
     this.isConnectionGood = false
-    this.isError = false
+    this.isConnectionError = false
+    this.isConnectionLimited = false
     this.domain = ""
     this.key = ""
     this.secret = ""
@@ -45,55 +51,56 @@ export class ConnectionCheckComponent {
 
 
   async checkConnection() {
+    this.isStatus = false
+    this.isConnectionError = false
+    this.isConnectionLimited = false
     this.isConnectionGood = false
-    this.isError = false
     
     try {
       if (this.domain === "") {
-        this.openSnackBar("Please enter a Domain", "OK")
-        this.isConnectionGood = false
+        this.openSnackBar("אנא הכנס דומיין", "OK")
+        this.isStatus = false
         return
       }
       if (this.key === "") {
-        this.openSnackBar("Please enter the Key", "OK")
-        this.isConnectionGood = false
+        this.openSnackBar("אנא הכנס מפתח", "OK")
+        this.isStatus = false
         return
       }
       if (this.secret === "") {
-        this.openSnackBar("Please enter the Secret", "OK")
-        this.isConnectionGood = false
+        this.openSnackBar("אנא הכנס סיסמה", "OK")
+        this.isStatus = false
         return
       }
       this.isLoading = true
       this.url = `${this.domain}/wp-json/wc/v3/data?consumer_key=${this.key}&consumer_secret=${this.secret}`
       const result = await axios.get(this.url)
 
-      // this.url
-      console.log(this.url);
-      
-      
+
       if(result.status!= 200){
         console.log(result.status);
         throw new Error
 
       } else {
         this.statusCode = `חיבור תקין!! קוד סטטוס : ${result.status}`
+        this.isStatus = true
         this.isConnectionGood = true
-      // this.domain = ""
-      // this.key = ""
-      // this.secret = ""
+        // this.domain = ""
+        // this.key = ""
+        // this.secret = ""
       console.log(result.status)
       }
     } catch (error) {
       console.log(axios.isAxiosError(error));
-      const axiosError = error as AxiosError;
+      const axiosError = error as AxiosError<any>;
       if (axiosError.message === "Network Error") {
-      this.isConnectionGood = true
-      this.statusCode = "!חיבור תקין אך מוגבל"
+      this.isStatus = true
+      this.isConnectionLimited = true
+      this.statusCode = `בדוק תקינות בקישור ,${axiosError.message} : !חיבור מוגבל`
       this.url
       }else {
-        this.isConnectionGood = true
-        this.isError = true
+        this.isStatus = true
+        this.isConnectionError = true
         console.log(error);
         this.statusCode = `${error}`
         this.url

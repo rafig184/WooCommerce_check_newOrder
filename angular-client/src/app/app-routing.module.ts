@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ConnectionCheckComponent } from './components/connection-check/connection-check.component';
 
 const routes: Routes = [
-  { path: 'home', component: ConnectionCheckComponent },
+  { path: '', component: ConnectionCheckComponent },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
