@@ -20,7 +20,6 @@ export class ConnectionCheckComponent {
   public isConnectionError: Boolean
   public isConnectionGood: Boolean
   public isConnectionLimited: Boolean
-  public errorStatus :any
   public url: string
   
 
@@ -35,7 +34,6 @@ export class ConnectionCheckComponent {
     this.isConnectionError = false
     this.isConnectionGood = false
     this.isConnectionLimited = false
-    this.errorStatus = ""
     this.url = ""
   }
 
@@ -85,25 +83,20 @@ export class ConnectionCheckComponent {
         this.statusCode = `חיבור תקין!! קוד סטטוס : ${result.status}`
         this.isStatus = true
         this.isConnectionGood = true
-        // this.domain = ""
-        // this.key = ""
-        // this.secret = ""
-      console.log(result.status)
+        console.log(result.status)
       }
     } catch (error) {
       console.log(axios.isAxiosError(error));
       const axiosError = error as AxiosError<any>;
       if (axiosError.message === "Network Error") {
-      this.isStatus = true
-      this.isConnectionLimited = true
-      this.statusCode = `בדוק תקינות בקישור ,${axiosError.message} : !חיבור מוגבל`
-      this.url
-      }else {
+        this.isStatus = true
+        this.isConnectionLimited = true
+        this.statusCode = `בדוק תקינות בקישור ,${axiosError.message} : !חיבור מוגבל`
+      } else {
         this.isStatus = true
         this.isConnectionError = true
         console.log(error);
         this.statusCode = `${error}`
-        this.url
       }
     } finally {
       this.isLoading = false
