@@ -1,16 +1,16 @@
 <div class="outterDiv">
     <div class="inlineDiv">
-        <mat-form-field class="example-full-width">
-            <mat-label>: הכנס דומיין</mat-label>
-            <input #input type="text" matInput [(ngModel)]="domain" (click)="selectInput(input)">
+        <mat-form-field class="example-full-width" dir="rtl">
+            <mat-label class="labels">הכנס דומיין :</mat-label>
+            <input dir="ltr" #input type="text" matInput [(ngModel)]="domain" (click)="selectInput(input)">
         </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>: הכנס מפתח</mat-label>
-            <input #input2 type="text" matInput [(ngModel)]="key" (click)="selectInput(input2)">
+        <mat-form-field class="example-full-width" dir="rtl">
+            <mat-label class="labels">הכנס מפתח :</mat-label>
+            <input dir="ltr" #input2 type="text" matInput [(ngModel)]="key" (click)="selectInput(input2)">
         </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>: הכנס סיסמה</mat-label>
-            <input #input3 type="password" matInput [(ngModel)]="secret" (click)="selectInput(input3)">
+        <mat-form-field class="example-full-width" dir="rtl">
+            <mat-label class="labels">הכנס סיסמה :</mat-label>
+            <input dir="ltr" #input3 type="password" matInput [(ngModel)]="secret" (click)="selectInput(input3)">
         </mat-form-field>
         <div class="btnDiv">
             <button mat-raised-button color="warn" class="button" (click)="clear()">נקה</button>
@@ -24,4 +24,7 @@
             <a class="button" mat-raised-button href={{this.url}} target="_blank">קישור לבדיקה</a>
         </div>
     </div>
+</div>
+<div class="footer">
+    <p>2024 Ⓒ כל הזכויות שמורות לניו אורדר בע"מ</p>
 </div>

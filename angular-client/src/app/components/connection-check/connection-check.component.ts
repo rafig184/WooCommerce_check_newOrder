@@ -107,6 +107,7 @@ export class ConnectionCheckComponent {
     const config = new MatSnackBarConfig();
     config.verticalPosition = 'top';
     config.duration = 6000;
+    config.direction = 'rtl';
     this._snackBar.open(message, action, config);
   }
 

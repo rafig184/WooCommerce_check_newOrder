@@ -12,12 +12,22 @@
     border-radius: 10px;
 }
 
+.footer{
+    margin-top: 5%;
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+}
+
+.labels{
+    font-family: "Open Sans", sans-serif;
+}
+
 
 .btnDiv {
     display: flex;
     gap: 10px;
-
 }
+
 
 .button{
     font-family: "Open Sans", sans-serif;
